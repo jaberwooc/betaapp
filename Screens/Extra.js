@@ -1,28 +1,23 @@
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import { StyleSheet, Button, View, Text } from "react-native";
+import { database } from "../src/config/fb";
 
 const Extra = ({ navigation }) => {
   const [suplements, setSuplements] = useState([]);
-  const sups = [
-    {
-      marca: "C4",
-      name: "C4 Ultimate",
-      category: "PreWorkout",
-      scoops: 30,
-      sabor: "skittles",
-    },
-    {
-      marca: "C4",
-      name: "C4 Premium",
-      category: "PreWorkout",
-      scoops: 32,
-      sabor: "skittles",
-    },
-  ];
-
-  const cargar = () => {
-    setSuplements([...suplements, ...sups]);
+  const sups = {
+    marca: "C4",
+    name: "C4 Ultimate",
+    category: "PreWorkout",
+    scoops: 15,
+    sabor: "skittles",
   };
+
+  async function cargar() {
+    const newref = doc(collection(database, "supplements"));
+
+    await setDoc(newref, sups);
+  }
   return (
     <View>
       {suplements.map((a) => (
