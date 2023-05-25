@@ -2,12 +2,15 @@ import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import Stacknavigations from "./Navigations/Stacknavigations";
+import Tabnavigations from "./Navigations/Tabnavigations";
+
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stacknavigations />
-    </NavigationContainer>
+    <View style={{ flex: 1 }}>
+      <NavigationContainer>
+        <Tabnavigations />
+      </NavigationContainer>
+    </View>
   );
 }
 

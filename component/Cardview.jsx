@@ -1,18 +1,21 @@
 import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native";
-function Cardview({ data }) {
-  return (
-    <TouchableOpacity style={styles.container}>
-      <View>
-        <Text>{data.name}</Text>
-        <Text>{data.scoops}</Text>
-        <Image
-          style={{ width: 50, height: 50 }}
-          source={{
-            uri: "https://reactnative.dev/img/tiny_logo.png",
-          }}
-        />
-      </View>
-    </TouchableOpacity>
+function Cardview({ data, h }) {
+  return h === true ? (
+    <View>
+      <Text style={styles.text}>{data}</Text>
+    </View>
+  ) : (
+    <View>
+      <Image
+        style={{ width: 100, height: 100 }}
+        x
+        source={{
+          uri: data.image,
+        }}
+      />
+      <Text>{data.name}</Text>
+      <Text>{data.scoops}</Text>
+    </View>
   );
 }
 
@@ -32,5 +35,12 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     paddingTop: 4,
     borderRadius: 5,
+  },
+  text: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: "bold",
+    letterSpacing: 0.25,
+    color: "black",
   },
 });
